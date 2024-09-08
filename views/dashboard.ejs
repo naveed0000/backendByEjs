@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@100..900&display=swap');
+        * { 
+            margin : 0px; 
+            padding : 0px
+            
+        }
+
+        body { 
+            /* background:rgb(172, 225, 116); */
+            color: white;
+            background-color: black;
+            font-family: cursive;
+            letter-spacing: 3px;
+        }
+        .title { 
+            padding: 20px 10px 0px 30px;
+            transition: all ease 1s;
+        }
+        .title:hover { 
+            text-shadow: red 2px 5px;
+            
+        }
+        .upper-container { 
+            display: flex;
+            justify-content:space-around;   
+        }
+        table { 
+            width: 80vw;
+            /* border: 1px solid lightgoldenrodyellow; */
+            border: 1px solid red;
+            margin: 2% 2%;
+            border-collapse: collapse;
+        }
+        th { 
+            border: 1px solid red;
+            text-align: center;
+            height: 5vh;
+            font-size: x-large;
+        }
+        th::first-letter{   
+            text-transform: capitalize;
+        }
+        td{
+            
+            /* border: 1px solid black; */
+            border: 1px solid red;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+         tr { 
+            border: 1px solid black;
+        }
+        
+        .add-btn, .search-btn, .update-btn, .delete-btn, .search-btn { 
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 5px;
+            padding: 12px 20px;
+            margin: 30px;
+            border: none; 
+            color : #fff; 
+            background-color: lightcoral;
+            transition: all ease 1s;
+        }
+        .update-btn { 
+            background-color: #a19bff;
+            letter-spacing: 0.3px;
+        }
+        .delete-btn { 
+            background-color: red;
+            margin: 10px;
+        }
+        .add-btn:hover, .search-btn:hover, .update-btn:hover, .delete-btn:hover { 
+            box-shadow: 5px 5px 0px black;
+        }
+        .input-text { 
+            font-weight: 700;
+            border-radius: 5px;
+            padding: 5px 20px;
+            height: 15px;
+        }
+        .input-text[type='text'] { 
+            height: 20px;
+            font-size: 18px;
+            font-weight: 650;
+            border-radius: 3px;
+            padding: 12px 20px;
+        }
+        .add-user-container { 
+            display: flex;
+            flex-direction: column;
+        }
+        .search-user-container { 
+            display: flex;
+            flex-direction: column;
+        }
+        .searchBtn { 
+            background-color: powderblue;
+        }
+        .container { 
+            display: flex;
+            justify-content: center;
+        }
+
+        /* UPDATE */
+        
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class='title'>DashBoard</h1>
+    <form action="/logout" method="POST" style="">
+        <button class="add-btn" type="submit">Logout</button>
+    </form>
+</div>
+    <div class="upper-container">
+
+        <div class="add-user-container">
+            <!-- <input class="input-text"  type="text">
+            <input class="input-text" type="text">
+            <input class="input-text" type="text">
+            <button class="add-btn">Add user</button> -->
+            <form action="/insert" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="number" name="age" placeholder="Age" required>
+                <input type="text" name="location" placeholder="Location" required>
+                <input type="text" name="school_name" placeholder="school_name" required>
+                <button class="add-btn" type="submit">Add User</button>
+            </form>
+        </div>
+        <div class="search-user-container">
+            <form action="/findStudent" method="GET">
+                <input type="text" name="_id" placeholder="search by Id" required>
+                <button class="search-btn" type="submit">search</button>
+            </form>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>age</th>
+            <th>location</th>
+
+            <th>School name</th>
+            <th>Actions</th>
+        </tr>
+        <!-- <tr>
+            <td>asdfasfsdfsdfa</td>
+            <td>shaikh naveed</td>
+            <td>24</td>
+            <td>little flower english school</td>
+            <td>
+                <button  class="update-btn">update </button>
+                <button class="delete-btn">delete</button>
+            </td>
+        </tr> -->
+    <tbody>
+        <% if (mongoData && mongoData.length > 0) { %>
+             
+                <%mongoData.forEach((element)=> { %>
+                    <tr id="dynamic">    
+                        <td id='<%= element._id.toHexString()%>'><%- element._id  %></td>
+                        <td><%= element.name%></td>
+                        <td><%= element.age  %></td>
+                        <td><%= element.location ? element.location: 'null'  %></td>
+                        <td><%= element.school_name ? element.school_name : 'null' %></td>
+                        <td class="ok">
+                                <a href="/updateInfo/<%= element._id.toHexString() %> "><button class="update-btn">update</button></a>
+                            
+                            <form action="/delete/<%= element._id.toHexString() %>" method="post">
+                                <button class="delete-btn" type="submit">Delete</button>
+                            </form>
+                        </td> 
+                    <% }); %>  
+        <% } else { %>
+                    <tr>
+                        <td colspan="4">No user found</td>
+                </tr>                    
+            <% } %>
+            
+        </tr>
+    </tbody>
+            
+            <!-- <td>
+                <button  class="update-btn">update </button>
+                <button class="delete-btn">delete</button>
+            </td> -->
+    </table>
+    <script>
+        function validateForm() {
+            // Get form inputs
+            const name = document.getElementById('name').value.trim();
+            const age = document.getElementById('age').value.trim();
+            const location = document.getElementById('location').value.trim();
+            const schoolName = document.getElementById('school_name').value.trim();
+            
+            // Error elements
+            const nameError = document.getElementById('nameError');
+            const ageError = document.getElementById('ageError');
+            const locationError = document.getElementById('locationError');
+            const schoolNameError = document.getElementById('schoolNameError');
+    
+            let valid = true;
+            
+            // Clear previous error messages
+            nameError.textContent = '';
+            ageError.textContent = '';
+            locationError.textContent = '';
+            schoolNameError.textContent = '';
+            
+            // Validate Name
+            if (name === "") {
+                nameError.textContent = "Name is required.";
+                valid = false;
+            } else if (!/^[a-zA-Z\s]+$/.test(name)) {
+                nameError.textContent = "Name must contain only letters and spaces.";
+                valid = false;
+            }
+            
+            // Validate Age
+            if (age === "") {
+                ageError.textContent = "Age is required.";
+                valid = false;
+            } else if (isNaN(age) || age < 1 || age > 120) {
+                ageError.textContent = "Please enter a valid age between 1 and 120.";
+                valid = false;
+            }
+            
+            // Validate Location
+            if (location === "") {
+                locationError.textContent = "Location is required.";
+                valid = false;
+            } else if (!/^[a-zA-Z\s]+$/.test(location)) {
+                locationError.textContent = "Location must contain only letters and spaces.";
+                valid = false;
+            }
+            
+            // Validate School Name
+            if (schoolName === "") {
+                schoolNameError.textContent = "School name is required.";
+                valid = false;
+            } else if (!/^[a-zA-Z\s]+$/.test(schoolName)) {
+                schoolNameError.textContent = "School name must contain only letters and spaces.";
+                valid = false;
+            }
+            console.log(name , age , location , schoolName);
+            
+            return valid; // Prevent form submission if validation fails
+        }
+    </script>
+    
+
+</body>
+
+</html>

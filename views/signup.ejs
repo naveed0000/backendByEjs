@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+body {
+  background: #2c3338;
+  color: #606468;
+  font: 87.5%/1.5em 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+input {
+  border: none;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  padding: 0;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#signup {
+  margin: 50px auto;
+  width: 320px;
+}
+
+#signup form {
+  margin: auto;
+  padding: 22px;
+  width: 100%;
+  border-radius: 5px;
+  background: #282e33;
+  border-top: 3px solid #434a52;
+  border-bottom: 3px solid #434a52;
+}
+
+#signup form span {
+  background-color: #363b41;
+  border-radius: 3px 0 0 3px;
+  border-right: 3px solid #434a52;
+  color: #606468;
+  display: block;
+  float: left;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+#signup form input[type="email"],
+#signup form input[type="password"] {
+  background-color: #3b4148;
+  border-radius: 0 3px 3px 0;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
+
+#signup form input[type="submit"] {
+  background: #b5cd60;
+  border: 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+#signup form input[type="submit"]:hover {
+  background: #16aa56;
+}
+
+    </style>
+</head>
+<body>
+    <div id="signup">
+        <form name="form-signup" action="/auth/signup" method="POST">
+            <div>
+                <label for="email">
+                    <span class="fontawesome-envelope"></span>
+                </label>
+                <input type="email" id="email" name="username" placeholder="Email" required>
+            </div>
+
+            <div>
+                <label for="password">
+                    <span class="fontawesome-lock"></span>
+                </label>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <div>
+                <label for="confirm-password">
+                    <span class="fontawesome-lock"></span>
+                </label>
+                <input type="password" id="confirm-password" name="password" placeholder="Confirm Password" required>
+            </div>
+
+            <div>
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

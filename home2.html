@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@100..900&display=swap');
+        * { 
+            margin : 0px; 
+            padding : 0px
+            
+        }
+
+        body { 
+            background: cadetblue;
+            font-family: cursive;
+            letter-spacing: 3px;
+        }
+        .title { 
+            padding: 20px 10px 0px 30px;
+        }
+        .upper-container { 
+            display: flex;
+            justify-content:space-around;   
+        }
+        table, td, th, tr { 
+            border: 1px solid black;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1 class='title'>DashBoard</h1>
+    <div class="upper-container">
+
+        <div>
+            <input type="text">
+            <input type="text">
+            <input type="text">
+            <button>Add user</button>
+        </div>
+        <div>
+            <input type="text">
+            <button>search User</button>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>age</th>
+            <th>School name</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td>asdfasfsdfsdfa</td>
+            <td>shaikh naveed</td>
+            <td>24</td>
+            <td>little flower english school</td>
+            <td>
+                <button>update </button>
+            </td>
+            <td>
+                <button>delete</button>
+            </td>
+        </tr>
+        
+    </table>
+
+</body>
+
+</html>
